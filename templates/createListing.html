@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Adding New Listing{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<h1 class="display-4">Listing Management</h1>
+<h5 class="display-5">Add New Listing</h5>
+<hr>
+<form method="POST" action="">
+  <div class="form-group">
+    {{ render_field(form.listing_owner, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.listing_name, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.listing_price, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.listing_description, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.listing_stock, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.listing_location, class="form-control") }}
+  </div>
+  <br>
+  <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+{% endblock %}
+

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Toy Outpost - Rewards {% endblock %}
+
+{% block content %}
+
+<style>
+  .card-img-top {
+    width: 355px;
+    height: 300px;
+}
+
+</style>
+
+
+<h1 class="display-4">Boxes</h1>
+
+
+
+
+<div class="container mt-5">
+    <p>Different Boxes:</p>
+    <div class="row">
+      {% if status == "Available" %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://media.karousell.com/media/photos/products/2020/02/03/fonfleurs_slimes_locker__toy_outpost_northpoint_city_mall_lv_3_1580664732_e0509ee8_progressive.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Box 1</h5>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" html-add="/updateRewardBR1/1/">Rent box</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">ABC123</span>
+          </div>
+        </div>
+      </div>
+
+      {% else %}
+      {% endif %}
+      {% if status2 == "Available" %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://media.karousell.com/media/photos/products/2022/8/15/pokmon_products__plaza_singapu_1660546271_8cb0fb9b.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Box 2</h5>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" html-add="/updateRewardBR1/2/">Rent box</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">DEF456</span>
+          </div>
+        </div>
+      </div>
+
+      {% else %}
+      {% endif %}
+      {% if status3 == "Available" %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://cardvolution.com/wp-content/uploads/2022/01/plazasing-2-1536x864.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Box 3</h5>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" html-add="/updateRewardBR1/3/">Rent box</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">GHI789</span>
+          </div>
+        </div>
+      </div>
+
+      {% else %}
+      {% endif %}
+
+    </div>
+</div>
+
+
+<script>
+  // Get the redeem buttons
+  var redeemButtons = document.getElementsByClassName('redeem-button');
+
+  // Add a click event listener to each redeem button
+  for (var i = 0; i < redeemButtons.length; i++) {
+    var button = redeemButtons[i];
+
+    button.addEventListener('click', function() {
+
+     // Get redirect from button's html attribute
+     var desHTML = this.getAttribute('html-add')
+
+      // redirect to vboxes.html when button is clicked
+      window.location.href = desHTML;
+    });
+  }
+</script>
+{% endblock %}

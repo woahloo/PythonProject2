@@ -1,0 +1,26 @@
+{% extends "baseStaff.html" %}
+{% block title %}Toy Outpost - Staff Home{% endblock %}
+
+{% block content %}
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Home</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="homeStaff">Home</a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Dashboard Content Start -->
+    <div>
+      <p>{{ session['login'] }}</p>
+      <img src="https://toyoutpost.sg/wp-content/uploads/2014/06/TOP-VivoCity.jpg" alt="">
+    </div>
+    <!-- End Dashboard Content -->
+
+  </main>
+
+{% endblock %}

@@ -1,0 +1,283 @@
+{% extends "baseStaff.html" %}
+{% block title %}Toy Outpost - Staff Home{% endblock %}
+
+{% block content %}
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="homeStaff">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/assets/css/dash.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+
+
+<body>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Orders</div>
+            <div class="number">150</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bx-cart-alt cart'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Sales</div>
+            <div class="number">250</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-add cart two' ></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Profit</div>
+            <div class="number">$1876</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">Up from yesterday</span>
+            </div>
+          </div>
+          <i class='bx bx-cart cart three' ></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Total Return</div>
+            <div class="number">185</div>
+            <div class="indicator">
+              <i class='bx bx-down-arrow-alt down'></i>
+              <span class="text">Down From Today</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-download cart four' ></i>
+        </div>
+      </div>
+<!-- Add Charts -->
+      <div class="graphBox">
+        <div class="box">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="box"></div>
+        <canvas id="users"></canvas>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Recent Sales</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Date</li>
+              <li><a href="#">13 Feb 2023</a></li>
+              <li><a href="#">10 Feb 2023</a></li>
+              <li><a href="#">10 Feb 2023</a></li>
+              <li><a href="#">09 Feb 2023</a></li>
+              <li><a href="#">07 Feb 2023</a></li>
+              <li><a href="#">07 Feb 2023</a></li>
+              <li><a href="#">07 Feb 2023</a></li>
+              <li><a href="#">04 Feb 2023</a></li>
+              <li><a href="#">02 Feb 2023</a></li>
+            </ul>
+            <ul class="details">
+            <li class="topic">Customer</li>
+            <li><a href="#">Alex Chua</a></li>
+            <li><a href="#">Andre Rush</a></li>
+            <li><a href="#">Alan Wong</a></li>
+            <li><a href="#">Diana Tan</a></li>
+            <li><a href="#">Martin Lee</a></li>
+            <li><a href="#">Jayden Chia</a></li>
+            <li><a href="#">Cheow Rui En</a></li>
+            <li><a href="#">Axel Lee</a></li>
+             <li><a href="#">Ivy Tan</a></li>
+          </ul>
+          <ul class="details">
+            <li class="topic">Sales</li>
+            <li><a href="#">Delivered</a></li>
+            <li><a href="#">Pending</a></li>
+            <li><a href="#">Returned</a></li>
+            <li><a href="#">Delivered</a></li>
+            <li><a href="#">Pending</a></li>
+            <li><a href="#">Returned</a></li>
+            <li><a href="#">Delivered</a></li>
+             <li><a href="#">Pending</a></li>
+            <li><a href="#">Delivered</a></li>
+          </ul>
+          <ul class="details">
+            <li class="topic">Total</li>
+            <li><a href="#">$15</a></li>
+            <li><a href="#">$24.55</a></li>
+            <li><a href="#">$25.88</a></li>
+            <li><a href="#">$170.66</a></li>
+            <li><a href="#">$5</a></li>
+            <li><a href="#">$25</a></li>
+            <li><a href="#">$67.33</a></li>
+             <li><a href="#">$23.53</a></li>
+             <li><a href="#">$46.52</a></li>
+          </ul>
+          </div>
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+        <div class="top-sales box">
+          <div class="title">Top Selling Products</div>
+          <ul class="top-sales-details">
+            <li>
+            <a href="#">
+              <!--<img src="images/sunglasses.jpg" alt="">-->
+              <span class="product">Phone Accessories</span>
+            </a>
+            <span class="price">$10</span>
+          </li>
+          <li>
+            <a href="#">
+               <!--<img src="images/jeans.jpg" alt="">-->
+              <span class="product">Electronic Gadgets </span>
+            </a>
+            <span class="price">$170</span>
+          </li>
+          <li>
+            <a href="#">
+             <!-- <img src="images/nike.jpg" alt="">-->
+              <span class="product">Watches</span>
+            </a>
+            <span class="price">$40</span>
+          </li>
+          <li>
+            <a href="#">
+              <!--<img src="images/scarves.jpg" alt="">-->
+              <span class="product">Soft Toys</span>
+            </a>
+            <span class="price">$24</span>
+          </li>
+          <li>
+            <a href="#">
+              <!--<img src="images/blueBag.jpg" alt="">-->
+              <span class="product">Cards</span>
+            </a>
+            <span class="price">$25</span>
+          </li>
+          <li>
+            <a href="#">
+              <!--<img src="images/bag.jpg" alt="">-->
+              <span class="product">Beauty Products</span>
+            </a>
+            <span class="price">$35</span>
+          <li>
+<!--            <a href="#">-->
+<!--              &lt;!&ndash;<img src="images/addidas.jpg" alt="">&ndash;&gt;-->
+<!--              <span class="product">Addidas Running Shoe</span>-->
+<!--            </a>-->
+<!--            <span class="price">$2345</span>-->
+<!--          </li>-->
+<!--<li>-->
+<!--            <a href="#">-->
+<!--             &lt;!&ndash;<img src="images/shirt.jpg" alt="">&ndash;&gt;-->
+<!--              <span class="product">Bilack Wear's Shirt</span>-->
+<!--            </a>-->
+<!--            <span class="price">$1245</span>-->
+<!--          </li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+<script src="/static/assets/js/my_chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var users = document.getElementById('users').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+        labels: [ 'Watches', 'Soft Toys', 'Cards'],
+        datasets: [{
+            label: 'Top 3 Selling Products',
+            data: [150, 250, 300],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+            ],
+
+        }]
+    },
+    options: {
+       responsive: true,
+    }
+});
+
+var myChart = new Chart(users, {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+            label: 'no. of users',
+            data: [12, 19, 11, 7, 9, 6],
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+
+
+        }]
+    },
+    options: {
+        responsive: true,
+    }
+});
+</script>
+
+</script>
+
+</body>
+
+
+
+
+  </main>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Toy Outpost - Rewards {% endblock %}
+
+{% block content %}
+<div class="mx-5 mt-4">
+<h1 class="display-4">Box Owner Rewards</h1>
+
+<div class="container mt-5">
+    {% if count != 0 %}
+    <p>Some rewards available for you:</p>
+    <div class="row">
+      {% for reward in rewards_list %}
+      {% if reward.get_status() == 'Active' %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ reward.get_cName() }}</h5>
+            <p class="card-text">{{ reward.get_desc() }}</p>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" data-code="{{ reward.get_code() }}" data-reward-id="{{ reward.get_rewardID() }}"><a href="{{url_for('redeemReward', id=reward.get_rewardID())}}" style="color: white; text-decoration: none">Redeem</a></button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">{{ reward.get_code() }}</span>
+          </div>
+        </div>
+      </div>
+      {% elif reward.get_status() == 'Expired' %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://www.perfectlens.ca/img/articles/expired-red-stamp.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ reward.get_cName() }}</h5>
+            <p class="card-text">{{ reward.get_desc() }}</p>
+          </div>
+        </div>
+      </div>
+      {% elif reward.get_status() == 'Redeemed' %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://t4.ftcdn.net/jpg/04/78/09/85/360_F_478098551_jOHkEN51EIuAwrI3mmmHMDJbYEQfVLlm.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ reward.get_cName() }}</h5>
+            <p class="card-text">{{ reward.get_desc() }}</p>
+            <p class="card-text" style="font-weight: bold">Coupon Code: {{ reward.get_code() }}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>You have no rewards!</p>
+    <div class="tenor-gif-embed" data-postid="16026853" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+      <a href="https://tenor.com/view/pepe-why-pepe-the-frog-sad-crying-gif-16026853">Pepe Why Pepe The Frog GIF</a>from <a href="https://tenor.com/search/pepe+why-gifs">Pepe Why GIFs</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    {% endif %}
+</div>
+</div>
+
+<!-- Script -->
+<script>
+  // Get the redeem buttons
+  var redeemButtons = document.getElementsByClassName('redeem-button');
+
+  // Add a click event listener to each redeem button
+  for (var i = 0; i < redeemButtons.length; i++) {
+    var button = redeemButtons[i];
+
+    button.addEventListener('click', function() {
+      // Get the coupon code from the button's data-code attribute
+      var couponCode = this.getAttribute('data-code');
+
+      // Find the coupon code container for this button
+      var couponCodeContainer = this.parentElement.getElementsByClassName('coupon-code')[0];
+
+      // Update the coupon code in the container
+      couponCodeContainer.getElementsByClassName('code')[0].innerHTML = couponCode;
+
+      // Show the coupon code container
+      couponCodeContainer.style.display = 'block';
+
+    });
+  }
+</script>
+
+
+{% endblock %}

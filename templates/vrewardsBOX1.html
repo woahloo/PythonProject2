@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Toy Outpost - Rewards {% endblock %}
+
+{% block content %}
+
+<style>
+  .card-img-top {
+    width: 355px;
+    height: 300px;
+}
+
+</style>
+
+
+<h1 class="display-4">Location</h1>
+
+<div class="container mt-5">
+    <p>Different Locations:</p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://fastly.4sqi.net/img/general/600x600/10123545_s-2epOzfhRvN2rMsLk857gqw-CuaAkzRraCQJCx9kuc.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ang Mo Kio</h5>
+            <p class="card-text"><a href="https://goo.gl/maps/y7qEcx18asttmLdE9" target = _blank>53 Ang Mo Kio Ave 3, Singapore 569933</a></p>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" html-add="/vboxes">View boxes</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://shopsinsg.com/wp-content/uploads/2020/12/consignment-shop-in-singapore.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Yishun</h5>
+            <p class="card-text"><a href="https://goo.gl/maps/tj3YndFT4CtoMoqd7" target = _blank>930 Yishun Ave 2, Singapore 769098</a></p>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" html-add="/vboxes2">View boxes</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">DEF456</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://cdn.shortpixel.ai/spai/q_glossy+w_973+to_auto+ret_img/https://guidesify.com/wp-content/uploads/2018/08/toy-outpost-2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Serangoon</h5>
+            <p class="card-text"><a href="https://goo.gl/maps/JLe6yg1NDzzbzea88" target = _blank>Serangoon Central, 23, Singapore 556083</a></p>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" html-add="/vboxes3">View boxes</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">GHI789</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  // Get the redeem buttons
+  var redeemButtons = document.getElementsByClassName('redeem-button');
+
+  // Add a click event listener to each redeem button
+  for (var i = 0; i < redeemButtons.length; i++) {
+    var button = redeemButtons[i];
+
+    button.addEventListener('click', function() {
+
+     // Get redirect from button's html attribute
+     var desHTML = this.getAttribute('html-add')
+
+      // redirect to vboxes.html when button is clicked
+      window.location.href = desHTML;
+    });
+  }
+</script>
+
+
+{% endblock %}

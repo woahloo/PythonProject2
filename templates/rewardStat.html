@@ -1,0 +1,49 @@
+{% extends "baseStaff.html" %}
+{% block title %}Toy Outpost Staff - Box Chart{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Rewards Statistics Graph</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="homeStaff">Home</a></li>
+          <li class="breadcrumb-item">Charts</li>
+          <li class="breadcrumb-item active">Rewards Redemption Rate Chart</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="box-chart"></canvas>
+    <script>
+        // Get data for chart from Flask variable
+        var boxData = {{ boxdata|tojson }};
+        // Create chart using Chart.js library
+        var ctx = document.getElementById('box-chart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Array.from({length: boxData.length}, (v, i) => i + 1),
+                datasets: [{
+                    label: 'Rewards',
+                    data: boxData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</main>
+{% endblock content %}

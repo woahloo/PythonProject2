@@ -1,0 +1,42 @@
+{% extends "baseStaff.html" %}
+{% block title %}Toy Outpost - Create Buyer Reward{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Create Buyer Reward</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="homeStaff">Home</a></li>
+                    <li class="breadcrumb-item">Customer Rewards Segment</li>
+                    <li class="breadcrumb-item active">Create Buyer Reward</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <form method="POST" action="">
+            <div class="form-group">
+                {{ render_field(form.coupon_name, class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ render_field(form.rType, class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ render_field(form.issueDate, class="form-check", style="list-style-type:none") }}
+            </div>
+            <div class="form-group">
+                {{ render_field(form.expiryDate, class="form-check", style="list-style-type:none") }}
+            </div>
+            <div class="form-group">
+                {{ render_field(form.code, class="form-control") }}
+            </div>
+            <div id="prof">
+                <div class="form-group">
+                    {{ render_field(form.description, class="form-control") }}
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary my-2"/>
+        </form>
+</main>
+{% endblock %}

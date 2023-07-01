@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Retrieve Customers{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Boxes you own</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no boxes.</p>
+  {% elif count == 1 %}
+  <p>There is 1 box.</p>
+  {% else %}
+  <p>There are {{ count }} boxes.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Box ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Date Until</th>
+        <th>Location</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in customers_list %}
+        <tr>
+          <td>{{ customer.get_customer_id() }}</td>
+          <td>{{ customer.get_first_name() }}</td>
+          <td>{{ customer.get_last_name() }}</td>
+          <td>{{ customer.get_email() }}</td>
+          <td>{{ customer.get_date_joined() }}</td>
+
+
+
+
+          <td>{{ customer.get_remarks() }}</td>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal_{{customer.get_customer_id()}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Confirmation</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure you want to delete {{customer.get_first_name()}} {{customer.get_last_name()}}?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <input type="submit" value="Delete" class="btn btn-danger">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+            </form>
+          </td>
+        </tr>
+        <script>
+          // Define the date joined and today's date
+          var dateJoined = new Date("{{ customer.get_date_joined() }}"); // Get the date joined from Flask
+          var today = new Date();
+
+          // Calculate the difference between the dates in milliseconds
+          var diffTime = Math.abs(today - dateJoined);
+          var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+          // Check if today is 1 day before date joined
+          if (diffDays == 1) {
+            // Check if the popup has already been shown
+            if (!sessionStorage.getItem('popupShown')) {
+              // Ask the user if they want to extend their membership
+              var extendBox = window.confirm("Your Box is about to expire. Do you want to extend your membership?");
+
+              // If the user confirms, redirect to /boxextend, otherwise redirect to /userbox
+              if (extendBox) {
+                window.location.href = "/updateRewardBR1/{{ customer.get_customer_id() }}/";
+              } else {
+                window.location.href = "/userbox";
+              }
+
+              // Set the popupShown flag to true
+              sessionStorage.setItem('popupShown', true);
+            }
+          }
+        </script>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+

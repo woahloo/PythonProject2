@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Toy Outpost - Rewards {% endblock %}
+
+{% block content %}
+
+<h1 class="display-4">Box Owner Rewards</h1>
+<div>
+    <p>Current points: 8176</p>
+</div>
+
+<div class="progress mx-5">
+  <div class="progress-bar" role="progressbar" style="width: {{ progress }}%" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div class="container mt-5">
+    <p>Some rewards available for you:</p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Reward 1</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" data-code="ABC123">Redeem</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">ABC123</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Reward 2</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" data-code="DEF456">Redeem</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">DEF456</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Reward 1</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <!-- Redeem button -->
+          <button class="btn btn-primary redeem-button" data-code="GHI789">Redeem</button>
+          <!-- Coupon code container -->
+          <div class="coupon-code mt-3" style="display: none;">
+            Coupon code: <span class="code">GHI789</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Script -->
+<script>
+  // Get the redeem buttons
+  var redeemButtons = document.getElementsByClassName('redeem-button');
+
+  // Add a click event listener to each redeem button
+  for (var i = 0; i < redeemButtons.length; i++) {
+    var button = redeemButtons[i];
+
+    button.addEventListener('click', function() {
+      // Get the coupon code from the button's data-code attribute
+      var couponCode = this.getAttribute('data-code');
+
+      // Find the coupon code container for this button
+      var couponCodeContainer = this.parentElement.getElementsByClassName('coupon-code')[0];
+
+      // Update the coupon code in the container
+      couponCodeContainer.getElementsByClassName('code')[0].innerHTML = couponCode;
+
+      // Show the coupon code container
+      couponCodeContainer.style.display = 'block';
+    });
+  }
+</script>
+
+{% endblock %}
